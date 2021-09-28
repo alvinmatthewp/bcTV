@@ -60,6 +60,7 @@ class ViewController: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleVideoTap))
         superPlayer.view.addGestureRecognizer(tapGesture)
         
+        addChild(superPlayer)
         videoWrapper.addSubview(superPlayer.view)
     }
     
