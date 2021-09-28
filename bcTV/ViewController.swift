@@ -6,8 +6,15 @@
 //
 
 import UIKit
+import ComposableArchitecture
 
 class ViewController: UIViewController {
+    
+    let store = Store(
+        initialState: AppState(),
+        reducer: appReducer,
+        environment: AppEnvironment()
+    )
 
     override func viewDidLoad() {
         super.viewDidLoad()
