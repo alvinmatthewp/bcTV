@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "ios-superplayer",
+        "repositoryURL": "https://github.com/tokopedia/ios-superplayer.git",
+        "state": {
+          "branch": null,
+          "revision": "1aa4b0d588d2d0c48f44d001ec666d40ccdad369",
+          "version": "1.0.0-beta"
+        }
+      },
+      {
         "package": "swift-case-paths",
         "repositoryURL": "https://github.com/pointfreeco/swift-case-paths",
         "state": {
