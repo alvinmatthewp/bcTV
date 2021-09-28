@@ -16,7 +16,9 @@
 		F098BAD12702CB530051A5FB /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = F098BAD02702CB530051A5FB /* ComposableArchitecture */; };
 		F098BAD42702CF480051A5FB /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F098BAD32702CF480051A5FB /* AppReducer.swift */; };
 		F098BAD72702D67D0051A5FB /* SuperPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = F098BAD62702D67D0051A5FB /* SuperPlayer */; };
-		F098BADB2702F9E20051A5FB /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F098BADA2702F9E20051A5FB /* UIImageView+Extension.swift */; };
+		F098BADB2702F9E20051A5FB /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F098BADA2702F9E20051A5FB /* UIView+Extension.swift */; };
+		F098BAEA270339CE0051A5FB /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F098BAE9270339CE0051A5FB /* UIImageView+Extension.swift */; };
+		F098BAF4270366710051A5FB /* Debounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = F098BAF3270366710051A5FB /* Debounce.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +31,9 @@
 		F098BAC72702C9D50051A5FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F098BAC92702C9D50051A5FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F098BAD32702CF480051A5FB /* AppReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
-		F098BADA2702F9E20051A5FB /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		F098BADA2702F9E20051A5FB /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		F098BAE9270339CE0051A5FB /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		F098BAF3270366710051A5FB /* Debounce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debounce.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,15 +68,15 @@
 		F098BABA2702C9D10051A5FB /* bcTV */ = {
 			isa = PBXGroup;
 			children = (
+				F098BADC270313610051A5FB /* Helper */,
 				F098BAD22702CF320051A5FB /* StateManagement */,
+				F098BABF2702C9D10051A5FB /* ViewController.swift */,
 				F098BABB2702C9D10051A5FB /* AppDelegate.swift */,
 				F098BABD2702C9D10051A5FB /* SceneDelegate.swift */,
-				F098BABF2702C9D10051A5FB /* ViewController.swift */,
 				F098BAC12702C9D10051A5FB /* Main.storyboard */,
 				F098BAC42702C9D50051A5FB /* Assets.xcassets */,
 				F098BAC62702C9D50051A5FB /* LaunchScreen.storyboard */,
 				F098BAC92702C9D50051A5FB /* Info.plist */,
-				F098BADA2702F9E20051A5FB /* UIImageView+Extension.swift */,
 			);
 			path = bcTV;
 			sourceTree = "<group>";
@@ -83,6 +87,16 @@
 				F098BAD32702CF480051A5FB /* AppReducer.swift */,
 			);
 			path = StateManagement;
+			sourceTree = "<group>";
+		};
+		F098BADC270313610051A5FB /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				F098BADA2702F9E20051A5FB /* UIView+Extension.swift */,
+				F098BAE9270339CE0051A5FB /* UIImageView+Extension.swift */,
+				F098BAF3270366710051A5FB /* Debounce.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,7 +177,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F098BADB2702F9E20051A5FB /* UIImageView+Extension.swift in Sources */,
+				F098BAEA270339CE0051A5FB /* UIImageView+Extension.swift in Sources */,
+				F098BAF4270366710051A5FB /* Debounce.swift in Sources */,
+				F098BADB2702F9E20051A5FB /* UIView+Extension.swift in Sources */,
 				F098BAC02702C9D10051A5FB /* ViewController.swift in Sources */,
 				F098BAD42702CF480051A5FB /* AppReducer.swift in Sources */,
 				F098BABC2702C9D10051A5FB /* AppDelegate.swift in Sources */,
