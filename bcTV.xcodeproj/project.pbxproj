@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F089D6D72704598D00EA04DA /* CustomPlayerControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F089D6D62704598D00EA04DA /* CustomPlayerControlView.swift */; };
+		F089D6D9270459DF00EA04DA /* CustomPlayerSeekBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F089D6D8270459DF00EA04DA /* CustomPlayerSeekBarView.swift */; };
+		F089D6DB27045B5300EA04DA /* UIControl+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F089D6DA27045B5300EA04DA /* UIControl+Combine.swift */; };
+		F089D6DD27045B8700EA04DA /* NSAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F089D6DC27045B8700EA04DA /* NSAttributedString+Extensions.swift */; };
 		F098BABC2702C9D10051A5FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F098BABB2702C9D10051A5FB /* AppDelegate.swift */; };
 		F098BABE2702C9D10051A5FB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F098BABD2702C9D10051A5FB /* SceneDelegate.swift */; };
 		F098BAC02702C9D10051A5FB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F098BABF2702C9D10051A5FB /* ViewController.swift */; };
@@ -15,9 +19,15 @@
 		F098BAC82702C9D50051A5FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F098BAC62702C9D50051A5FB /* LaunchScreen.storyboard */; };
 		F098BAD12702CB530051A5FB /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = F098BAD02702CB530051A5FB /* ComposableArchitecture */; };
 		F098BAD42702CF480051A5FB /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F098BAD32702CF480051A5FB /* AppReducer.swift */; };
+		F098BAD72702D67D0051A5FB /* SuperPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = F098BAD62702D67D0051A5FB /* SuperPlayer */; };
+		F098BAF4270366710051A5FB /* Debounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = F098BAF3270366710051A5FB /* Debounce.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F089D6D62704598D00EA04DA /* CustomPlayerControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPlayerControlView.swift; sourceTree = "<group>"; };
+		F089D6D8270459DF00EA04DA /* CustomPlayerSeekBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPlayerSeekBarView.swift; sourceTree = "<group>"; };
+		F089D6DA27045B5300EA04DA /* UIControl+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Combine.swift"; sourceTree = "<group>"; };
+		F089D6DC27045B8700EA04DA /* NSAttributedString+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Extensions.swift"; sourceTree = "<group>"; };
 		F098BAB82702C9D10051A5FB /* bcTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bcTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F098BABB2702C9D10051A5FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F098BABD2702C9D10051A5FB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -27,6 +37,7 @@
 		F098BAC72702C9D50051A5FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F098BAC92702C9D50051A5FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F098BAD32702CF480051A5FB /* AppReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
+		F098BAF3270366710051A5FB /* Debounce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debounce.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,12 +46,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				F098BAD12702CB530051A5FB /* ComposableArchitecture in Frameworks */,
+				F098BAD72702D67D0051A5FB /* SuperPlayer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F089D6D52704597000EA04DA /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				F089D6D62704598D00EA04DA /* CustomPlayerControlView.swift */,
+				F089D6D8270459DF00EA04DA /* CustomPlayerSeekBarView.swift */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
 		F098BAAF2702C9D10051A5FB = {
 			isa = PBXGroup;
 			children = (
@@ -60,10 +81,12 @@
 		F098BABA2702C9D10051A5FB /* bcTV */ = {
 			isa = PBXGroup;
 			children = (
+				F089D6D52704597000EA04DA /* Custom */,
+				F098BADC270313610051A5FB /* Helper */,
 				F098BAD22702CF320051A5FB /* StateManagement */,
+				F098BABF2702C9D10051A5FB /* ViewController.swift */,
 				F098BABB2702C9D10051A5FB /* AppDelegate.swift */,
 				F098BABD2702C9D10051A5FB /* SceneDelegate.swift */,
-				F098BABF2702C9D10051A5FB /* ViewController.swift */,
 				F098BAC12702C9D10051A5FB /* Main.storyboard */,
 				F098BAC42702C9D50051A5FB /* Assets.xcassets */,
 				F098BAC62702C9D50051A5FB /* LaunchScreen.storyboard */,
@@ -78,6 +101,16 @@
 				F098BAD32702CF480051A5FB /* AppReducer.swift */,
 			);
 			path = StateManagement;
+			sourceTree = "<group>";
+		};
+		F098BADC270313610051A5FB /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				F098BAF3270366710051A5FB /* Debounce.swift */,
+				F089D6DA27045B5300EA04DA /* UIControl+Combine.swift */,
+				F089D6DC27045B8700EA04DA /* NSAttributedString+Extensions.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -98,6 +131,7 @@
 			name = bcTV;
 			packageProductDependencies = (
 				F098BAD02702CB530051A5FB /* ComposableArchitecture */,
+				F098BAD62702D67D0051A5FB /* SuperPlayer */,
 			);
 			productName = bcTV;
 			productReference = F098BAB82702C9D10051A5FB /* bcTV.app */;
@@ -128,6 +162,7 @@
 			mainGroup = F098BAAF2702C9D10051A5FB;
 			packageReferences = (
 				F098BACF2702CB530051A5FB /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+				F098BAD52702D67D0051A5FB /* XCRemoteSwiftPackageReference "ios-superplayer" */,
 			);
 			productRefGroup = F098BAB92702C9D10051A5FB /* Products */;
 			projectDirPath = "";
@@ -156,10 +191,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F098BAF4270366710051A5FB /* Debounce.swift in Sources */,
+				F089D6DB27045B5300EA04DA /* UIControl+Combine.swift in Sources */,
 				F098BAC02702C9D10051A5FB /* ViewController.swift in Sources */,
+				F089D6D72704598D00EA04DA /* CustomPlayerControlView.swift in Sources */,
+				F089D6DD27045B8700EA04DA /* NSAttributedString+Extensions.swift in Sources */,
 				F098BAD42702CF480051A5FB /* AppReducer.swift in Sources */,
 				F098BABC2702C9D10051A5FB /* AppDelegate.swift in Sources */,
 				F098BABE2702C9D10051A5FB /* SceneDelegate.swift in Sources */,
+				F089D6D9270459DF00EA04DA /* CustomPlayerSeekBarView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,7 +356,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.alvinmatthew.bcTV;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -335,7 +375,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.alvinmatthew.bcTV;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -371,6 +411,14 @@
 				version = 0.19.0;
 			};
 		};
+		F098BAD52702D67D0051A5FB /* XCRemoteSwiftPackageReference "ios-superplayer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tokopedia/ios-superplayer.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = "1.0.0-beta";
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -378,6 +426,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F098BACF2702CB530051A5FB /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
 			productName = ComposableArchitecture;
+		};
+		F098BAD62702D67D0051A5FB /* SuperPlayer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F098BAD52702D67D0051A5FB /* XCRemoteSwiftPackageReference "ios-superplayer" */;
+			productName = SuperPlayer;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
