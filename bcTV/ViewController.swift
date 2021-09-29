@@ -46,7 +46,6 @@ class ViewController: UIViewController {
         
         viewStore.send(.loadVideo)
 
-        
         viewStore.publisher.videoState
             .sink(receiveValue: { [weak self] state in
                 self?.handleVideoState(state: state)
