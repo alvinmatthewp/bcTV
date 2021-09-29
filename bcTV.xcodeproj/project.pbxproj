@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F089D6D72704598D00EA04DA /* CustomPlayerControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F089D6D62704598D00EA04DA /* CustomPlayerControlView.swift */; };
+		F089D6D9270459DF00EA04DA /* CustomPlayerSeekBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F089D6D8270459DF00EA04DA /* CustomPlayerSeekBarView.swift */; };
+		F089D6DB27045B5300EA04DA /* UIControl+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F089D6DA27045B5300EA04DA /* UIControl+Combine.swift */; };
+		F089D6DD27045B8700EA04DA /* NSAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F089D6DC27045B8700EA04DA /* NSAttributedString+Extensions.swift */; };
 		F098BABC2702C9D10051A5FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F098BABB2702C9D10051A5FB /* AppDelegate.swift */; };
 		F098BABE2702C9D10051A5FB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F098BABD2702C9D10051A5FB /* SceneDelegate.swift */; };
 		F098BAC02702C9D10051A5FB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F098BABF2702C9D10051A5FB /* ViewController.swift */; };
@@ -20,6 +24,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F089D6D62704598D00EA04DA /* CustomPlayerControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPlayerControlView.swift; sourceTree = "<group>"; };
+		F089D6D8270459DF00EA04DA /* CustomPlayerSeekBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPlayerSeekBarView.swift; sourceTree = "<group>"; };
+		F089D6DA27045B5300EA04DA /* UIControl+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Combine.swift"; sourceTree = "<group>"; };
+		F089D6DC27045B8700EA04DA /* NSAttributedString+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Extensions.swift"; sourceTree = "<group>"; };
 		F098BAB82702C9D10051A5FB /* bcTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bcTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F098BABB2702C9D10051A5FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F098BABD2702C9D10051A5FB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +53,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F089D6D52704597000EA04DA /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				F089D6D62704598D00EA04DA /* CustomPlayerControlView.swift */,
+				F089D6D8270459DF00EA04DA /* CustomPlayerSeekBarView.swift */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
 		F098BAAF2702C9D10051A5FB = {
 			isa = PBXGroup;
 			children = (
@@ -64,6 +81,7 @@
 		F098BABA2702C9D10051A5FB /* bcTV */ = {
 			isa = PBXGroup;
 			children = (
+				F089D6D52704597000EA04DA /* Custom */,
 				F098BADC270313610051A5FB /* Helper */,
 				F098BAD22702CF320051A5FB /* StateManagement */,
 				F098BABF2702C9D10051A5FB /* ViewController.swift */,
@@ -89,6 +107,8 @@
 			isa = PBXGroup;
 			children = (
 				F098BAF3270366710051A5FB /* Debounce.swift */,
+				F089D6DA27045B5300EA04DA /* UIControl+Combine.swift */,
+				F089D6DC27045B8700EA04DA /* NSAttributedString+Extensions.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -172,10 +192,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F098BAF4270366710051A5FB /* Debounce.swift in Sources */,
+				F089D6DB27045B5300EA04DA /* UIControl+Combine.swift in Sources */,
 				F098BAC02702C9D10051A5FB /* ViewController.swift in Sources */,
+				F089D6D72704598D00EA04DA /* CustomPlayerControlView.swift in Sources */,
+				F089D6DD27045B8700EA04DA /* NSAttributedString+Extensions.swift in Sources */,
 				F098BAD42702CF480051A5FB /* AppReducer.swift in Sources */,
 				F098BABC2702C9D10051A5FB /* AppDelegate.swift in Sources */,
 				F098BABE2702C9D10051A5FB /* SceneDelegate.swift in Sources */,
+				F089D6D9270459DF00EA04DA /* CustomPlayerSeekBarView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -20,6 +20,15 @@ class ViewController: UIViewController {
         return spinner
     }()
     
+    lazy var playerControl: CustomPlayerControlView = {
+        let control = CustomPlayerControlView(store: store.scope(
+            state: \.superPlayerState.control,
+            action: AppAction.superPlayerAction
+        ))
+        
+        return control
+    }()
+    
     let store = Store(
         initialState: AppState(),
         reducer: appReducer,
@@ -42,7 +51,7 @@ class ViewController: UIViewController {
         ))
 
         setupView()
-        setupTouch()
+//        setupTouch()
         
         viewStore.send(.loadVideo)
 
@@ -60,18 +69,29 @@ class ViewController: UIViewController {
     func setupView() {
         indicator.isHidden = true
         
+        playerControl.backgroundColor = .black.withAlphaComponent(0.5)
+        
         view.addSubview(spinner)
         view.addSubview(indicator)
+        view.addSubview(playerControl)
         
         spinner.translatesAutoresizingMaskIntoConstraints = false
-        spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        playerControl.translatesAutoresizingMaskIntoConstraints = false
         
-        indicator.translatesAutoresizingMaskIntoConstraints = false
-        indicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        indicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        indicator.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        indicator.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        NSLayoutConstraint.activate([
+            spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            
+            indicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            indicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            indicator.widthAnchor.constraint(equalToConstant: 50),
+            indicator.heightAnchor.constraint(equalToConstant: 50),
+            
+            playerControl.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            playerControl.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            playerControl.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            playerControl.heightAnchor.constraint(equalToConstant: CustomPlayerControlView.height)
+        ])
     }
     
     func setupTouch() {
@@ -96,16 +116,13 @@ class ViewController: UIViewController {
         let superPlayer = SuperPlayerViewController(store: store)
         superPlayer.view.frame = view.frame
         superPlayer.view.backgroundColor = .black
-        superPlayer.view.isUserInteractionEnabled = true
         
         viewStore.publisher.superPlayerState.player.timeControlStatus
             .sink(receiveValue: { [weak self] timeControlStatus in
                 if timeControlStatus == .waitingToPlayAtSpecifiedRate {
                     self?.spinner.startAnimating()
-                    self?.view.isUserInteractionEnabled = false
                 } else {
                     self?.spinner.stopAnimating()
-                    self?.view.isUserInteractionEnabled = true
                 }
             })
             .store(in: &disposeBag)
