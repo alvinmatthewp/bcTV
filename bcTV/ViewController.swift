@@ -12,17 +12,11 @@ import SuperPlayer
 
 class ViewController: UIViewController {
     
-    lazy var indicator: UIImageView = {
-        let image = UIImageView()
-        image.indicatorStyle()
-        image.centerInParent(parent: self.view)
-        return image
-    }()
+    let indicator = UIImageView()
     
     lazy var spinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView(style: .large)
         spinner.color = .white
-        spinner.centerInParent(parent: self.view)
         return spinner
     }()
     
@@ -31,6 +25,8 @@ class ViewController: UIViewController {
         reducer: appReducer,
         environment: AppEnvironment.mock
     )
+    
+    let progressView = UIProgressView()
     
     lazy var viewStore = ViewStore(self.store)
     var disposeBag = Array<AnyCancellable>()
@@ -58,11 +54,25 @@ class ViewController: UIViewController {
             .store(in: &disposeBag)
     }
     
+    override var prefersStatusBarHidden: Bool {
+        true
+    }
+    
     func setupView() {
+        indicator.isHidden = true
+        
         view.addSubview(spinner)
         view.addSubview(indicator)
         
-        indicator.isHidden = true
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        indicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        indicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        indicator.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        indicator.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
     func setupTouch() {
@@ -76,9 +86,11 @@ class ViewController: UIViewController {
 
         leftView.backgroundColor = .clear
         rightView.backgroundColor = .clear
-
-        self.view.addSubview(leftView)
-        self.view.addSubview(rightView)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
+        view.addGestureRecognizer(tapGesture)
+        view.addSubview(leftView)
+        view.addSubview(rightView)
     }
     
     func handleVideo(store: Store<SuperPlayerState, SuperPlayerAction>) {
@@ -87,17 +99,14 @@ class ViewController: UIViewController {
         superPlayer.view.backgroundColor = .black
         superPlayer.view.isUserInteractionEnabled = true
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(videoTapped))
-        superPlayer.view.addGestureRecognizer(tapGesture)
-        
         viewStore.publisher.superPlayerState.player.timeControlStatus
             .sink(receiveValue: { [weak self] timeControlStatus in
                 if timeControlStatus == .waitingToPlayAtSpecifiedRate {
                     self?.spinner.startAnimating()
-                    tapGesture.isEnabled = false
+                    self?.view.isUserInteractionEnabled = false
                 } else {
                     self?.spinner.stopAnimating()
-                    tapGesture.isEnabled = true
+                    self?.view.isUserInteractionEnabled = true
                 }
             })
             .store(in: &disposeBag)
@@ -115,7 +124,7 @@ class ViewController: UIViewController {
         viewStore.send(.backwardVideo)
     }
     
-    @objc func videoTapped() {
+    @objc func viewTapped() {
         viewStore.send(.handleTapVideo)
     }
     
