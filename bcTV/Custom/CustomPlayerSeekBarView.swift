@@ -37,9 +37,8 @@ internal final class CustomPlayerSeekBarView: UIView {
         return node
     }()
 
-    internal lazy var doneSeeking = Publishers.Merge(
-        seekerNode.publisher(for: UIControl.Event.touchUpInside),
-        seekerNode.publisher(for: UIControl.Event.touchUpOutside))
+    internal lazy var doneSeeking =
+        seekerNode.publisher(for: UIControl.Event.touchUpOutside)
 
     private let loadedTimeNode: UIView = {
         let node = UIView()
@@ -114,12 +113,6 @@ internal final class CustomPlayerSeekBarView: UIView {
                 viewStore.send(.player(.callMethod(.pause)))
             }
             .store(in: &disposeBag)
-
-        doneSeeking
-            .sink { [viewStore] _ in
-                viewStore.send(.doneSeeking)
-            }
-            .store(in: &disposeBag)
     }
     
     override internal func layoutSubviews() {
@@ -129,11 +122,13 @@ internal final class CustomPlayerSeekBarView: UIView {
             barNodeDidLayout = true
             viewStore.send(.seekBarWidth(barNode.frame.width))
         }
-        
-        print(loadedTimeNode.frame.width)
     }
 
     @objc internal func panAction(pan: UIPanGestureRecognizer) {
+        if pan.state == .ended {
+            viewStore.send(.doneSeeking)
+        }
+        
         let velocity = pan.velocity(in: seekerNode)
         guard abs(velocity.x) > abs(velocity.y) else {
             return
@@ -147,9 +142,5 @@ internal final class CustomPlayerSeekBarView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    override var canBecomeFirstResponder: Bool {
-        true
     }
 }

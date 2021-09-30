@@ -60,6 +60,12 @@ class ViewController: UIViewController {
                 self?.handleVideoState(state: state)
             })
             .store(in: &disposeBag)
+        
+        playerControl.playButtonTapped
+            .sink(receiveValue: { [weak self] _ in
+                self?.viewStore.send(.handleTapVideo)
+            })
+            .store(in: &disposeBag)
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -121,8 +127,10 @@ class ViewController: UIViewController {
             .sink(receiveValue: { [weak self] timeControlStatus in
                 if timeControlStatus == .waitingToPlayAtSpecifiedRate {
                     self?.spinner.startAnimating()
+                    self?.view.isUserInteractionEnabled = false
                 } else {
                     self?.spinner.stopAnimating()
+                    self?.view.isUserInteractionEnabled = true
                 }
             })
             .store(in: &disposeBag)

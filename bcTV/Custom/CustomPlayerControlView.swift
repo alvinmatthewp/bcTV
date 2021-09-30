@@ -20,7 +20,6 @@ public final class CustomPlayerControlView: UIView {
     private let playButton: UIButton = {
         let node = UIButton()
         node.accessibilityIdentifier = "playPauseButton"
-        node.setBackgroundImage(UIImage(systemName: "play.fill"), for: .normal)
         node.tintColor = .white
         return node
     }()
@@ -30,7 +29,7 @@ public final class CustomPlayerControlView: UIView {
     }
 
     private let seekBar: CustomPlayerSeekBarView
-    public var doneSeeking: Publishers.Merge<UIControlPublisher<UIControl>, UIControlPublisher<UIControl>> {
+    public var doneSeeking: UIControlPublisher<UIControl> {
         seekBar.doneSeeking
     }
 
@@ -49,11 +48,6 @@ public final class CustomPlayerControlView: UIView {
         addSubview(seekBar)
         addSubview(timeIndicator)
         
-        seekBar.isUserInteractionEnabled = true
-        
-        let panGesture = UITapGestureRecognizer(target: self, action: #selector(pan))
-        seekBar.addGestureRecognizer(panGesture)
-        
         playButton.translatesAutoresizingMaskIntoConstraints = false
         seekBar.translatesAutoresizingMaskIntoConstraints = false
         timeIndicator.translatesAutoresizingMaskIntoConstraints = false
@@ -65,8 +59,9 @@ public final class CustomPlayerControlView: UIView {
             playButton.centerYAnchor.constraint(equalTo: centerYAnchor),
             playButton.widthAnchor.constraint(equalToConstant: CustomPlayerControlView.height / 2),
             
-            seekBar.leadingAnchor.constraint(equalTo: playButton.trailingAnchor, constant: 4),
+            seekBar.leadingAnchor.constraint(equalTo: playButton.trailingAnchor, constant: 12),
             seekBar.trailingAnchor.constraint(equalTo: timeIndicator.leadingAnchor, constant: -12),
+            seekBar.heightAnchor.constraint(equalToConstant: CustomPlayerControlView.height),
             seekBar.centerYAnchor.constraint(equalTo: centerYAnchor),
             
             timeIndicator.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -75,9 +70,9 @@ public final class CustomPlayerControlView: UIView {
         ])
 
         viewStore.publisher.playIcon
-            .map(UIImage.init(named:))
-            .sink { [weak self] image in
+            .sink { [weak self] icon in
                 guard let self = self else { return }
+                let image = UIImage(systemName: icon == "pip_pause" ? "pause.fill" : "play.fill")
                 self.playButton.setImage(image, for: .normal)
                 self.setNeedsLayout()
             }
@@ -106,7 +101,6 @@ public final class CustomPlayerControlView: UIView {
                 NSAttributedString .body3(currentTimeLabel + " / " + actualDuration, color: .white)
             }
             .sink { [weak self] currentTimeLabel in
-                print("ct", currentTimeLabel)
                 guard let self = self else { return }
                 self.timeIndicator.attributedText = currentTimeLabel
                 self.setNeedsLayout()
@@ -116,10 +110,6 @@ public final class CustomPlayerControlView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    @objc func pan() {
-        print("pan")
     }
 }
 
